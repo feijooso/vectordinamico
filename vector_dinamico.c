@@ -14,7 +14,7 @@ bool vector_obtener(vector_t* vector, size_t pos, int* valor){
 
 	if (0 < pos && pos < tam){
 
-		valor = *vector[pos];
+		valor = ((pos-1) * sizeof(int) + vector->datos);
 		return true;
 	}
 
@@ -29,7 +29,8 @@ bool vector_guardar(vector_t* vector, size_t pos, int valor){
 	size_t tam = vector->tam;
 
 	if (0 < pos && pos < tam){
-		vector[pos] = valor;
+
+		*((pos-1) * sizeof(int) + vector->datos) = valor;
 		return true;
 	}
 
