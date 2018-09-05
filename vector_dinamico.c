@@ -1,4 +1,6 @@
 #include "vector_dinamico.h"
+#include <stdio.h>
+
 
 
 // Funciones del alumno.
@@ -12,15 +14,14 @@ bool vector_obtener(vector_t* vector, size_t pos, int* valor){
 
 	size_t tam = vector->tam;
 
-	if (0 < pos && pos < tam){
+	if (pos < tam){
 
-		valor = ((pos-1) * sizeof(int) + vector->datos);
+		//valor = (pos * sizeof(int) + vector->datos);
+		*valor = vector->datos[pos];
 		return true;
 	}
 
-	else{
-		return false;
-	}
+	return false;
 
 }
 
@@ -28,17 +29,14 @@ bool vector_guardar(vector_t* vector, size_t pos, int valor){
 
 	size_t tam = vector->tam;
 
-	if (0 < pos && pos < tam){
+	if (pos < tam){
 
-		*((pos-1) * sizeof(int) + vector->datos) = valor;
+		//*(pos * sizeof(int) + vector->datos) = valor;
+		vector->datos[pos] = valor;
 		return true;
 	}
 
-	else{
-
-		return false;
-	}
-
+	return false;
 
 }
 
